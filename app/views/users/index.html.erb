@@ -1,0 +1,5 @@
+<%= form_for :userCode, :action => users_path, :method => :post do |f| %>
+<%= f.label :'Write your code here' %>
+<%= f.text_area :code, :class => 'codemirror-textarea' %>
+<%= submit_tag 'Run' %>
+<% end %>
