@@ -13,11 +13,8 @@ class UsersController < ApplicationController
       #   render json:{ stdout: stdout.read, stderr: stderr.read}
       # end
       codeResult = Sicuro.eval(@code)
-      render json:{
-        result: codeResult.stdout,
-        error: codeResult.stderr
+      render json:  codeResult.stdout
 
-      }
 
 
   end
