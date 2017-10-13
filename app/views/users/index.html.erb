@@ -1,5 +1,5 @@
-<%= form_for :userCode, :action => users_path, :method => :post, remote: true do |f| %>
+<%= form_for :userCode, :html => {:onsubmit => "submitstuff()"}, :action => users_path, :method => :post do |f| %>
 <%= f.label :'Write your code here' %>
 <%= f.text_area :code, :class => 'codemirror-textarea' %>
-<%= submit_tag 'Run', :id => 'run-code' %>
+<%= submit_tag 'Run' %>
 <% end %>
