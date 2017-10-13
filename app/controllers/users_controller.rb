@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       #   render json:{ stdout: stdout.read, stderr: stderr.read}
       # end
       @codeResult = Sicuro.eval(@code)
-      render json:  @codeResult.stdout.to_s.gsub(/(?:\n\r?|\r\n?)/, '<br>')
+      render json:  CGI::escapeHTML(@codeResult.stdout.to_s).gsub(/(?:\n\r?|\r\n?)/, '<br>')
 
 
 
