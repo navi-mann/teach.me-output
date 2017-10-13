@@ -5,28 +5,9 @@ $(document).ready(function() {
      mode: "text/x-ruby"
    })
 
+   $('form').on("ajax:success",function(e, data,status,xhr){
+    $('#result').html(e.detail[0]);
+   });
 
 
 });
-// putting outside document ready so that submitstuff is in global scope
-window.submitstuff = function(){
-  event.preventDefault();
-  var values = getFormValues();
-
-  console.log(values);
-  $.ajax({
-    url: '/users',
-    method: 'POST',
-    dataType: 'JSON',
-    data: values
-  }).done(function(responseData){
-    console.log("=> "+responseData);
-  })
-}
-
-window.getFormValues = function getFormValues() {
-var value = window.editor.getValue()
-return {
-  "code": value
-}
-}

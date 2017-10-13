@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
 
   require 'sicuro'
   # require 'open3'
@@ -9,17 +9,15 @@ class UsersController < ApplicationController
   end
 
   def create
-    @code = params[:code]
+    @code = params[:userCode][:code]
 
       # Open3.popen3("ruby -e ' #{@code}'") do |stdin, stdout, stderr|
       #   render json:{ stdout: stdout.read, stderr: stderr.read}
       # end
       @codeResult = Sicuro.eval(@code)
-      render json:  @codeResult.stdout
+      render json:  @codeResult.stdout.to_s.gsub(/(?:\n\r?|\r\n?)/, '<br>')
 
-    #  if request.xhr?
-    #    render json: @codeResult.stdout
-    #  end
+
 
   end
 
