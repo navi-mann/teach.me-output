@@ -6,11 +6,13 @@ $(document).ready(function() {
    })
 
 
+
 });
 // putting outside document ready so that submitstuff is in global scope
 window.submitstuff = function(){
   event.preventDefault();
   var values = getFormValues();
+
   console.log(values);
   $.ajax({
     url: '/users',
@@ -18,7 +20,7 @@ window.submitstuff = function(){
     dataType: 'JSON',
     data: values
   }).done(function(responseData){
-    console.log(responseData);
+    console.log("=> "+responseData);
   })
 }
 

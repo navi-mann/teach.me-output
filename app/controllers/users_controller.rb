@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @code = params['code']
+    @code = params[:code]
 
       # Open3.popen3("ruby -e ' #{@code}'") do |stdin, stdout, stderr|
       #   render json:{ stdout: stdout.read, stderr: stderr.read}
